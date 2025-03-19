@@ -15,7 +15,7 @@ def main():
     # Ruta al archivo Excel
     excel_path = "data/Films.xlsx"
 
-    # --- Extracción ---
+    # Extracción
     extractor = Extractor(excel_path)
     try:
         raw_data = extractor.extract_with_pandas()
@@ -24,7 +24,7 @@ def main():
         logger.error(f"Fallo en la extracción: {e}")
         return
 
-    # --- Transformación ---
+    # Transformación
     transformer = Transformer(raw_data)
     try:
         # Limpieza de datos con Pandas
@@ -35,7 +35,7 @@ def main():
         logger.error(f"Fallo en la transformación: {e}")
         return
 
-    # --- Carga ---
+    # Carga
     loader = Loader(destination="data/output")
     try:
         loader.load_to_csv(transformed_data)
